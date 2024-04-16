@@ -1,8 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 int main(){
+    double copuesto, cadya, hipotenusa, pitagora;
+    printf("Ingrese el cateto opuesto: ");
+    scanf("%lf", &copuesto);
+    printf("\nIngrese el cateto adyacente: ");
+    scanf("%lf", &cadya);;
     
+    pitagora = sqrt(copuesto * copuesto + cadya * cadya);
+    
+    printf("Su tema pitagorica es: %.2f", pitagora);
     
     return 0;
 }
