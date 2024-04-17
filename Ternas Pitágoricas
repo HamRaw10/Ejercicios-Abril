@@ -11,7 +11,7 @@ int main(){
     
     pitagora = sqrt(copuesto * copuesto + cadya * cadya);
     
-    printf("Su tema pitagorica es: %.2f", pitagora);
+    printf("Su terna pitagorica es: %.2f", pitagora);
     
     return 0;
 }
