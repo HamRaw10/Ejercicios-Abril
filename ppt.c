@@ -15,7 +15,7 @@ int main() {
     
     while(contadorUsuario < 3 || contadorPC < 3) {
         scanf("%d", &usuarioPPT);
-        pcPPT = rand() % 3 + 1;
+        pcPPT = rand() % 3;
         printf("Vos: %d   VS   Pc: %d\n", usuarioPPT, pcPPT); 
         
         if(usuarioPPT == pcPPT) {
@@ -31,16 +31,16 @@ int main() {
         printf("Juegos: Tu ganaste: %d, la pc gano %d por el momento.\n", puntosU, puntosPC);
         printf("Rondas: Tu ganaste: %d, la pc gano %d por el momento.\n\n", contadorUsuario, contadorPC);
         
-        if(puntosU == 3) {
+        if(puntosU == 2) {
             contadorUsuario ++;
             puntosU = 0;
             puntosPC = 0;
-        } else if(puntosPC == 3) {
+        } else if(puntosPC == 2) {
             contadorPC ++;
             puntosPC = 0;
             puntosU = 0;
         }
-        if(contadorUsuario == 3) { printf("Sacas. . . \n\n"); break; }
+        if(contadorUsuario == 3) { printf("Ganaste!! \n\n"); break; }
         if(contadorPC== 3) { printf("Perdiste\n\n"); break; }
     }
     
