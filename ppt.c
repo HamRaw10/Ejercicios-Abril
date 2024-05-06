@@ -3,10 +3,10 @@
 #include <time.h>
 
 int main() {
-    char *ppt[] = {"piedra", "papel", "tijera"};
-    int puntosU = 0, puntosPC = 0;
-    int contadorUsuario = 0, contadorPC = 0;
-    int usuarioPPT, pcPPT;
+    char *ppt[] = {"piedra", "papel", "tijera"}; //Creo un array para las 3 variables
+    int puntosU = 0, puntosPC = 0; //Creo 2 variables que van a ir contando los puntos en los juegos
+    int contadorUsuario = 0, contadorPC = 0; //Creo otras 2 variables que van a ir contando los puntos en las rondas
+    int usuarioPPT, pcPPT; //Creo otras 2 variables que van a ir almacenando el numero elegido por el usuario y la computdora para competir
     
     srand(time(NULL));
     puts("Juguemos piedra papel o tijera!!");
