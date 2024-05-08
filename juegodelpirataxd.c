@@ -27,6 +27,8 @@ int main() {
     int tc;
     //Creo una variable de entero para la fila donde esta el tesoro
     int tf; 
+    //Creo una variable entera para los intentos posibles de los movimientos del pirata
+    int intentos = 0;
     
     puts("Ingrese el espacio de su tablero: ");
     //El usuario ingresa un valor para el temeño de la matriz donde se va a jugar
@@ -84,8 +86,69 @@ int main() {
         }
         printf("\n");
     }
+    //Creo un while que nos va a hacer funcionar el juego, que tiene un limite de 50 movimientos
+     while(intentos <= 50){
+        printf("a donde te quieres mover: N es de Norte, S es de Sur, E es de Este y O es de Oeste: ");
+        //En este scanf el usuario va a moverse al norte, sur, este u oeste mediante la tecla que seleccione
+        scanf(" %c", &movimiento);
+        printf("\n");
+        /*Creo 2 variables enteras donde van a desaparecer los antiguos espacios donde se encontraba el pirata y se 
+        actualiza segun el movimiento del usuario*/
+        int pfn = pf;
+        int pcn = pc;
 
-
-
+        //Creo un if que indica que cada vez que el usuario ingrese 'n' o 'N', la 'P' del pirata se movera al norte
+        if(movimiento == 'n' || 'N'){
+            //Creo un array que indica que cada vez que el pirata vaya al norte se le resta un valor a la fila de la matriz donde se encuentra el pirata
+            a[pf - 1][pc] = 'P';
+            //Creo un array que indica que la 'x' de la matriz va cambiando segun el movimiento del pirata
+            a[pfn][pcn] = 'x';
+            pf = pfn - 1;
+            pc = pcn;
+        }
+        //Agrego un else if que indica que cada vez que el usuario ingrese 's' o 'S', la 'P' del pirata se movera al sur
+        else if(movimiento == 's' || 'S'){
+            //Creo un array que nos indica que para que el pirata vaya al sur se suma 1 valor a la fila de la matriz donde se encuentra el pirataa
+            a[pf + 1][pc] = 'P';
+            //Creo un array que indica que la 'x' de la matriz va cambiando segun el movimiento del pirata
+            a[pfn][pcn] = 'x';
+            pf = pfn + 1;
+            pc = pcn;
+        }
+        //Agrego un else if que indica que cada vez que el usuario ingrese 'e' o 'E', la 'P' del pirata se movera al este
+        else if(movimiento == 'e' || 'E'){
+            //Creo un array que indica que cada vez que el pirata vaya al este se le resta un valor a la columna de la matriz donde se encuentra el pirata
+            a[pf ][pc - 1] = 'P';
+            //Creo un array que indica que la 'x' de la matriz va cambiando segun el movimiento del pirata
+            a[pfn][pcn] = 'x';
+            pf = pfn;
+            pc = pcn - 1;
+        }
+        //Agrego un else if que indica que cada vez que el usuario ingrese 'o' u 'O', la 'P' del pirata se movera al oeste
+        else if(movimiento == 'o' || 'O'){
+            //Creo un array que indica que cada vez que el pirata vaya al oeste se le suma un valor a la columna de la matriz donde se encuentra el pirata
+            a[pf][pc] = 'P';
+            //Creo un array que indica que la 'x' de la matriz va cambiando segun el movimiento del pirata
+            a[pfn][pcn + 1] = 'x';
+            pf = pfn;
+            pc = pcn + 1;
+        }
+         
+        /*
+        Creo 2 for que van a imprimir la matriz
+        */ 
+             for (int i = 0; i < fila; i++) {
+        for (int j = 0; j < columna; j++) {
+            printf("%c ", a[i][j]);
+            }
+            printf("\n");
+        }
+        intentos++;
+    }
     return 0;
+    
 }
+
+
+
+  
