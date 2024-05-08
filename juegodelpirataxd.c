@@ -135,7 +135,7 @@ int main() {
         }
          
         /*
-        Creo 2 for que van a imprimir la matriz
+        Creo 2 for que van a imprimir la matriz actualizada segun el movimiento del pirata, y hasta que cumpla su objetivo
         */ 
              for (int i = 0; i < fila; i++) {
         for (int j = 0; j < columna; j++) {
