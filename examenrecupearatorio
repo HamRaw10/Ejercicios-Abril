@@ -1,0 +1,743 @@
+#define RESET "\033[0m"
+#define RED "\033[1;31m"
+#define MAGENTA "\033[1;35m"
+#define CYAN "\033[1;36m"
+#define FILAS 10
+#define COLUMNAS 6
+#define FILAS_4X3 4
+#define COLUMNAS_4X3 3
+#define DIVISIONES 4
+#define ALUMNOS 15
+#define APROBADO 60
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+  
+struct xd
+{
+  
+int opcion;
+   
+int i;
+   
+int j;
+   
+int matriz[FILAS][COLUMNAS];
+   
+int matriz_transformada[FILAS][COLUMNAS];
+   
+int menusino;
+ 
+};
+
+ 
+struct oa
+{
+  
+int matriz[FILAS_4X3][COLUMNAS_4X3];
+   
+int suma_diagonal_principal;
+   
+int suma_diagonal_secundaria;
+   
+int suma_primera_ultima_fila;
+   
+int suma_primera_ultima_columna;
+   
+int menusino;
+ 
+};
+
+ 
+struct dd
+{
+  
+int matriz[DIVISIONES][ALUMNOS];
+   
+float promedio[DIVISIONES];
+   
+int aprobados[DIVISIONES];
+   
+int reprobados[DIVISIONES];
+   
+int mayor_nota;
+ 
+}; 
+
+void crearmatrizej1 ();
+
+void crearmatrizej2 ();
+
+void dibujarmatrizej2 ();
+
+void dibujarmatrizej1 ();
+
+void calcularmatrizej2 ();
+
+void menu ();
+
+void menuej1 ();
+
+void menuej2 ();
+
+void menuej3 ();
+
+void ingresarnotas ();
+
+void dibujarnotas ();
+
+ 
+void
+menu ()
+{
+  
+struct xd x;
+  
+while (1)
+	{
+	  
+printf (CYAN "Elija un ejercicio: 1, 2 o 3: " RESET);
+	  
+scanf ("%d", &x.opcion);
+	  
+switch (x.opcion)
+		{
+		
+case 1:
+		  
+menuej1 ();
+		  
+break;
+		
+case 2:
+		  
+menuej2 ();
+		  
+break;
+		
+case 3:
+		  
+menuej3 ();
+		  
+break;
+		
+default:
+		  
+printf ("Saliendo del programa.\n");
+		  
+exit (0);
+		
+}
+	
+}
+
+}
+
+
+ 
+void
+menuej3 ()
+{
+  
+struct oa a;
+  
+struct xd x;
+  
+struct dd e;
+  
+while (1)
+	{
+	  
+printf
+		("Ingrese la opcion: Ingresar notas(1), Dibujar notas(2), menu principal (3), Salir(Cualquier otra tecla): ");
+	  
+scanf ("%d", &x.opcion);
+	  
+ 
+switch (x.opcion)
+		{
+		
+case 1:
+		  
+ingresarnotas ();
+		  
+break;
+		
+case 2:
+		  
+dibujarnotas ();
+		  
+break;
+		
+case 3:
+		  
+menu ();
+		  
+break;
+		
+default:
+		  
+printf ("Saliendo del programa.\n");
+		  
+exit (0);
+		
+}
+	
+}
+
+}
+
+
+ 
+void
+menuej2 ()
+{
+  
+struct oa a;
+  
+struct xd x;
+  
+while (1)
+	{
+	  
+printf
+		("Ingrese la opcion: Crear(1), Dibujar(2), menu principal (3), Salir(Cualquier otra tecla): ");
+	  
+scanf ("%d", &x.opcion);
+	  
+ 
+switch (x.opcion)
+		{
+		
+case 1:
+		  
+crearmatrizej2 ();
+		  
+break;
+		
+case 2:
+		  
+dibujarmatrizej2 ();
+		  
+break;
+		
+case 3:
+		  
+menu ();
+		  
+break;
+		
+default:
+		  
+printf ("Saliendo del programa.\n");
+		  
+exit (0);
+		
+}
+	
+}
+
+}
+
+
+ 
+void
+menuej1 ()
+{
+  
+struct xd x;
+  
+ 
+while (1)
+	{
+	  
+printf
+		("Ingrese la opcion: Crear(1), Dibujar(2), menu principal (3),Salir(Cualquier otra tecla): ");
+	  
+scanf ("%d", &x.opcion);
+	  
+ 
+switch (x.opcion)
+		{
+		
+case 1:
+		  
+crearmatrizej1 ();
+		  
+break;
+		
+case 2:
+		  
+dibujarmatrizej1 ();
+		  
+break;
+		
+case 3:
+		  
+menu ();
+		  
+break;
+		
+default:
+		  
+printf ("Saliendo del programa.\n");
+		  
+exit (0);
+		
+}
+	
+}
+
+ 
+ 
+}
+
+
+ 
+void
+crearmatrizej1 ()
+{
+  
+struct xd x;
+  
+printf (CYAN "La matriz 10x6 Se esta creando\n" RESET);
+  
+srand (time (NULL));
+  
+for (x.i = 1; x.i <= FILAS; x.i++)
+	{
+	  
+for (x.j = 1; x.j <= COLUMNAS; x.j++)
+		{
+		  
+x.matriz[x.i][x.j] = rand () % 100 + 1;
+		  
+if (x.j % 2 == 0)
+			{
+			  
+x.matriz_transformada[x.i][x.j] =
+				x.matriz[x.i][x.j] * x.matriz[x.i][x.j] * x.matriz[x.i][x.j];
+			
+}
+		  else
+			{
+			  
+x.matriz_transformada[x.i][x.j] =
+				x.matriz[x.i][x.j] * x.matriz[x.i][x.j];
+			
+}
+		
+}
+	
+}
+  
+printf (MAGENTA "La matriz 10x6 fue creada exitosamente.\n" RESET);
+  
+printf ("Desea volver al menu?: 1(si), 2(no): ");
+  
+scanf ("%d", &x.menusino);
+  
+if (x.menusino == 1)
+	{
+	  
+menuej1 ();
+	
+}
+  
+  else
+	{
+	  
+printf ("Saliendo del programa.\n");
+	  
+exit (0);
+	
+}
+
+}
+
+
+ 
+void
+dibujarmatrizej1 ()
+{
+  
+struct xd x;
+  
+printf (CYAN "Esta es la primer matriz: \n" RESET);
+  
+for (x.i = 1; x.i <= FILAS; x.i++)
+	{
+	  
+for (x.j = 0; x.j <= COLUMNAS; x.j++)
+		{
+		  
+printf ("%d ", x.matriz[x.i][x.j]);
+		
+}
+	  
+printf ("\n");
+	
+}
+  
+ 
+printf (MAGENTA "Esta es la matriz convertida con numeros: \n" RESET);
+  
+for (x.i = 1; x.i <= FILAS; x.i++)
+	{
+	  
+for (x.j = 1; x.j <= COLUMNAS; x.j++)
+		{
+		  
+printf ("%d ", x.matriz_transformada[x.i][x.j]);
+		
+}
+	  
+printf ("\n");
+	
+}
+  
+printf ("Desea volver al menu?: 1(si), 2(no): ");
+  
+scanf ("%d", &x.menusino);
+  
+if (x.menusino == 1)
+	{
+	  
+menuej1 ();
+	
+}
+  
+  else
+	{
+	  
+printf ("Saliendo del programa.\n");
+	  
+exit (0);
+	
+}
+
+}
+
+
+ 
+void
+crearmatrizej2 ()
+{
+  
+struct oa a;
+  
+printf (CYAN "Ingrese 12 nC:meros para la matriz 4x3:\n" RESET);
+  
+for (int i = 0; i < FILAS_4X3; i++)
+	{
+	  
+for (int j = 0; j < COLUMNAS_4X3; j++)
+		{
+		  
+scanf ("%d", &a.matriz[i][j]);
+	
+} 
+} 
+calcularmatrizej2 ();
+  
+printf (MAGENTA "La matriz 4x3 fue creada exitosamente.\n" RESET);
+  
+printf ("Desea volver al menu?: 1(si), 2(no): ");
+  
+scanf ("%d", &a.menusino);
+  
+if (a.menusino == 1)
+	{
+	  
+menuej2 ();
+	
+}
+  
+  else
+	{
+	  
+printf ("Saliendo del programa.\n");
+	  
+exit (0);
+	
+}
+
+}
+
+
+ 
+void
+dibujarmatrizej2 ()
+{
+  
+struct oa a;
+  
+printf (CYAN "Esta es la matriz 4x3 ingresada:\n" RESET);
+  
+for (int i = 0; i < FILAS_4X3; i++)
+	{
+	  
+for (int j = 0; j < COLUMNAS_4X3; j++)
+		{
+		  
+printf ("%d ", a.matriz[i][j]);
+		
+} 
+printf ("\n");
+	
+} 
+ 
+printf (MAGENTA "Resultados de las sumas:\n" RESET);
+  
+printf ("Suma de la diagonal principal: %d\n", a.suma_diagonal_principal);
+  
+printf ("Suma de la diagonal secundaria: %d\n",
+		   a.suma_diagonal_secundaria);
+  
+printf ("Suma de la primera y C:ltima fila: %d\n",
+		   a.suma_primera_ultima_fila);
+  
+printf ("Suma de la primera y C:ltima columna: %d\n",
+		   a.suma_primera_ultima_columna);
+  
+printf ("\nDesea volver al menu?: 1(si), 2(no): ");
+  
+scanf ("%d", &a.menusino);
+  
+if (a.menusino == 1)
+	{
+	  
+menuej2 ();
+	
+}
+  
+  else
+	{
+	  
+printf ("Saliendo del programa.\n");
+	  
+exit (0);
+	
+}
+
+}
+
+
+ 
+void
+calcularmatrizej2 ()
+{
+  
+struct oa a;
+  
+a.suma_diagonal_principal = 0;
+  
+a.suma_diagonal_secundaria = 0;
+  
+a.suma_primera_ultima_fila = 0;
+  
+a.suma_primera_ultima_columna = 0;
+  
+ 
+for (int i = 0; i < FILAS_4X3; i++)
+	{
+	  
+for (int j = 0; j < COLUMNAS_4X3; j++)
+		{
+		  
+if (i == j)
+			{
+			  
+a.suma_diagonal_principal += a.matriz[i][j];
+			
+}
+		  
+if (i + j == COLUMNAS_4X3 - 1)
+			{
+			  
+a.suma_diagonal_secundaria += a.matriz[i][j];
+			
+}
+		
+}
+	
+}
+  
+ 
+for (int j = 0; j < COLUMNAS_4X3; j++)
+	{
+	  
+a.suma_primera_ultima_fila +=
+		a.matriz[0][j] + a.matriz[FILAS_4X3 - 1][j];
+  
+} 
+ 
+for (int i = 0; i < FILAS_4X3; i++)
+	{
+	  
+a.suma_primera_ultima_columna +=
+		a.matriz[i][0] + a.matriz[i][COLUMNAS_4X3 - 1];
+	
+} 
+printf ("\nDesea volver al menu?: 1(si), 2(no): ");
+  
+scanf ("%d", &a.menusino);
+  
+if (a.menusino == 1)
+	{
+	  
+menuej2 ();
+	
+}
+  
+  else
+	{
+	  
+printf ("Saliendo del programa.\n");
+	  
+exit (0);
+	
+}
+
+}
+
+
+ 
+void
+ingresarnotas ()
+{
+  
+struct dd e;
+  
+printf (CYAN
+		   "Ingrese las notas para cada uno de los 15 alumnos en cada una de las 4 divisiones:\n"
+		   RESET);
+  
+for (int i = 0; i < DIVISIONES; i++)
+	{
+	  
+printf ("DivisiC3n %d:\n", i + 1);
+	  
+e.promedio[i] = 0;
+	  
+e.aprobados[i] = 0;
+	  
+e.reprobados[i] = 0;
+	  
+for (int j = 0; j < ALUMNOS; j++)
+		{
+		  
+scanf ("%d", &e.matriz[i][j]);
+		  
+e.promedio[i] += e.matriz[i][j];
+		  
+if (e.matriz[i][j] >= APROBADO)
+			{
+			  
+e.aprobados[i]++;
+			
+}
+		  else
+			{
+			  
+e.reprobados[i]++;
+			
+}
+		
+}
+	  
+e.promedio[i] /= ALUMNOS;
+	
+}
+  
+ 
+e.mayor_nota = e.matriz[0][0];
+  
+for (int i = 0; i < DIVISIONES; i++)
+	{
+	  
+for (int j = 0; j < ALUMNOS; j++)
+		{
+		  
+if (e.matriz[i][j] > e.mayor_nota)
+			{
+			  
+e.mayor_nota = e.matriz[i][j];
+			
+}
+		
+}
+	
+}
+  
+printf (MAGENTA "Las notas fueron ingresadas exitosamente.\n" RESET);
+
+}
+
+
+ 
+void
+dibujarnotas ()
+{
+  
+struct dd e;
+  
+printf (CYAN "Notas de los alumnos:\n" RESET);
+  
+for (int i = 0; i < DIVISIONES; i++)
+	{
+	  
+printf ("DivisiC3n %d:\n", i + 1);
+	  
+for (int j = 0; j < ALUMNOS; j++)
+		{
+		  
+printf ("%d ", e.matriz[i][j]);
+		
+} 
+printf ("\n");
+  
+} 
+ 
+for (int i = 0; i < DIVISIONES; i++)
+	{
+	  
+printf (MAGENTA "Promedio de la DivisiC3n %d: %.2f\n" RESET, i + 1,
+			   e.promedio[i]);
+	
+} 
+ 
+printf (RED "La mayor nota en general es: %d\n" RESET,
+				  e.mayor_nota);
+  
+ 
+for (int i = 0; i < DIVISIONES; i++)
+	{
+	  
+printf (CYAN "DivisiC3n %d:\n" RESET, i + 1);
+	  
+printf ("Aprobados: %d\n", e.aprobados[i]);
+	  
+printf ("Reprobados: %d\n", e.reprobados[i]);
+
+} 
+} 
+ 
+int
+
+main ()
+{
+  
+struct xd x;
+  
+struct oa a;
+  
+menu ();
+  
+ 
+ 
+return 0;
+
+ 
+ 
+}
