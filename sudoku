@@ -190,7 +190,7 @@ int main() {
                 break;
             }
             default:{
-            	printf("opcion invalida down");
+            	printf("opcion invalida xd");
 				break;
 			}
         };
